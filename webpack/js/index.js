@@ -9,4 +9,8 @@ boxnode.onmousedown=function(e){
 		boxnode.offsetLeft=e.clientX-disx;
 		boxnode.offsetTop=e.clientY-disy;
 	}
+	document.onmouseup=function(){
+		onmousemove=null
+		onmouseup=null
+	}
 }
