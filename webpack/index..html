@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <style>
+    .list{
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+    }
+    .active{
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+<body>
+  <div class="list">1</div>
+  <div class="list">2</div>
+  <div class="list">3</div>
+  <div class="list">4</div>
+  <div class="list">5</div>
+  <div class="list">6</div>
+  <div class="list">7</div>
+  <div class="list">8</div>
+  <div class="list">9</div>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <script>
+    $(function() {
+      setChoseData($('.list'),'active')
+    })
+
+    function setChoseData(nodeMode,className) {
+      var isArryList = []
+      $.each(nodeMode,function(index) {
+        $(this).attr('data-index',index)
+      })
+      nodeMode.click(function() {
+        var sub = $(this).attr('data-index')
+        if(checkIndex(sub-0,isArryList)) {
+          nodeMode.eq(sub).toggleClass(className)
+        }  
+      })
+    }
+
+    function checkIndex(index,arr) {
+      if(arr.length == 0) {
+        arr.push(index);
+        return true;
+      }
+      var sub = index == arr[0] ? 1: index == arr[arr.length - 1] ? 2 : 3;
+      switch(sub) {
+        case 1:
+          arr.splice(0,1);
+          return true;
+        case 2:
+          arr.splice(arr.length-1,1);
+          return true;
+        default:
+          var iHas =  index == arr[0]-1 || index == arr[arr.length - 1] + 1;
+          if(iHas) {
+            arr.push(index);
+            arr.sort();
+          }
+          return iHas;  
+      }
+    }
+  </script>
+</body>
+</html>
