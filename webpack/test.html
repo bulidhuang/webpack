@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .layout{
+      width: 400px;
+      height: 327px;
+      border: 1px solid salmon;
+      background: #fff;
+      overflow: hidden;
+    }
+    li{
+      line-height: 40px;
+      text-align: center;
+      border-bottom: 1px salmon solid;
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <ul class="scroll-view">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>      
+    </ul>
+  </div>
+  <script>
+      var node = document.querySelector('.layout');
+      var scrollNode = document.querySelector('.scroll-view');
+      var tops = scrollNode.scrollHeight/2;
+      var count = 0
+      var time = setInterval(()=>{
+        count+=2
+        scrollNode.style.transform = `translateY(-${count}px)`;
+        if(count >= tops) {
+          count = 0
+        }
+      },30)
+  </script>
+</body>
+</html>
